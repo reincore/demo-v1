@@ -5,3 +5,10 @@
 .card {
   margin-bottom: 20px;
 }
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
