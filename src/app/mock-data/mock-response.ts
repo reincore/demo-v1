@@ -1,4 +1,4 @@
-import { GameDataResponse } from '../models/GameDataResponse.model';
+import { GameDataResponse } from '../models/game-data-response.model';
 
 export const RESPONSE: GameDataResponse[] = [
   {

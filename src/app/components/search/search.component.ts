@@ -22,24 +22,20 @@ export class SearchComponent implements AfterViewInit, OnDestroy {
   constructor() {}
 
   ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
     this.detectInput();
   }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
     this.subscription.unsubscribe();
   }
 
   private detectInput(): void {
     this.subscription.add(
-      fromEvent(this.inputSearch.nativeElement, 'input') // ilk parametre HTML referansı, 2. parametre hangi event olduğu
+      fromEvent(this.inputSearch.nativeElement, 'input')
         .pipe(
           debounceTime(250),
           map((e: any) => e.target.value),
-          distinctUntilChanged() // gelen e.target.value öncekinden farklıysa işleme alınıyor
+          distinctUntilChanged()
         )
         .subscribe((searchValue: string) => {
           this.onSearch.emit(searchValue);
