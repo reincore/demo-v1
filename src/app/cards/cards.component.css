@@ -1,0 +1,10 @@
+.card-deck {
+  display: grid;
+  margin: 100px 200px;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: max-content;
+}
+
+.card {
+  margin-bottom: 20px;
+}
