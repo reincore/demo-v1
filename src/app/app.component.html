@@ -1,1 +1,4 @@
-<app-cards></app-cards>
+<div class="app-container">
+  <app-search (onSearch)="filterGames($event)"></app-search>
+  <app-cards [games]="filteredGames"></app-cards>
+</div>
