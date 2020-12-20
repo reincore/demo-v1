@@ -1,4 +1,4 @@
-import { GameDataResponse } from './models/game-data-response';
+import { GameDataResponse } from '../models/GameDataResponse.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -8,15 +8,12 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GameService {
-  private gamesUrl = 'https://5b96285652764b001413bbd1.mockapi.io/api/data';
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  private readonly gamesUrl =
+    'https://5b96285652764b001413bbd1.mockapi.io/api/data';
 
   constructor(private http: HttpClient) {}
 
-  getGames(): Observable<GameDataResponse[]> {
+  public getGames(): Observable<GameDataResponse[]> {
     return this.http
       .get<GameDataResponse[]>(this.gamesUrl)
       .pipe(catchError(this.handleError<GameDataResponse[]>('getGames', [])));
