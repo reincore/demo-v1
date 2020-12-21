@@ -1,4 +1,4 @@
-<div *ngIf="!games" class="not-found">Nothing found</div>
+<div *ngIf="!games || games.length === 0" class="not-found">Nothing found</div>
 
 <div class="card-deck row">
   <div *ngFor="let game of games" class="col-12 col-sm-6 col-md-4 col-lg-3">
