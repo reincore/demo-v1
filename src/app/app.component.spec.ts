@@ -1,12 +1,13 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { GameService } from './services/game.service';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      providers: [GameService, HttpClient, HttpHandler],
+      declarations: [AppComponent]
     }).compileComponents();
   });
 
@@ -16,16 +17,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'demo-v1'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('demo-v1');
-  });
-
-  it('should render title', () => {
+  it('should render the app container', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('demo-v1 app is running!');
+    expect(compiled.querySelector('.app-container')).toBeTruthy();
   });
 });

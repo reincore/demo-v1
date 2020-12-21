@@ -1,9 +1,9 @@
-import { GameDataResponse } from '../models/GameDataResponse.model';
+import { GameDataResponse } from '../models/game-data-response.model';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })

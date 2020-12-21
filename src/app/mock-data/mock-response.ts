@@ -1,6 +1,6 @@
-import { GameDataResponse } from '../models/GameDataResponse.model';
+import { GameDataResponse } from '../models/game-data-response.model';
 
-export const RESPONSE: GameDataResponse[] = [
+export const MOCK_RESPONSE: GameDataResponse[] = [
   {
     id: '1',
     name: 'Game 1',

@@ -1,49 +1,20 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnDestroy,
-  Output,
-  ViewChild
-} from '@angular/core';
-import { Subscription, fromEvent } from 'rxjs';
-import { debounceTime, map, distinctUntilChanged, tap } from 'rxjs/operators';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('searchInput') inputSearch: ElementRef;
+export class SearchComponent implements OnInit {
   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
-  private subscription: Subscription = new Subscription();
+
+  searchInput: string;
+
   constructor() {}
 
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
-    this.detectInput();
-  }
+  ngOnInit(): void {}
 
-  ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    this.subscription.unsubscribe();
-  }
-
-  private detectInput(): void {
-    this.subscription.add(
-      fromEvent(this.inputSearch.nativeElement, 'input') // ilk parametre HTML referansı, 2. parametre hangi event olduğu
-        .pipe(
-          debounceTime(250),
-          map((e: any) => e.target.value),
-          distinctUntilChanged() // gelen e.target.value öncekinden farklıysa işleme alınıyor
-        )
-        .subscribe((searchValue: string) => {
-          this.onSearch.emit(searchValue);
-        })
-    );
+  onSearchInputChange() {
+    this.onSearch.emit(this.searchInput);
   }
 }

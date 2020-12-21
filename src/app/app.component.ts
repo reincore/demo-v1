@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { GameDataResponse } from './models/GameDataResponse.model';
+import { GameDataResponse } from './models/game-data-response.model';
 import { GameService } from './services/game.service';
 
 @Component({
@@ -20,8 +20,6 @@ export class AppComponent {
   }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
     this.subscription.unsubscribe();
   }
 

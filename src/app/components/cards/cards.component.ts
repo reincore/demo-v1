@@ -1,4 +1,4 @@
-import { GameDataResponse } from '../../models/GameDataResponse.model';
+import { GameDataResponse } from '../../models/game-data-response.model';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
